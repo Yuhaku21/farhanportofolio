@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animasi Sedang Mengetik dengan Bootstrap</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" />
+    <style>
+      .typing-container {
+        font-family: monospace;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .blinking-cursor {
+        animation: blink 0.7s step-end infinite;
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="typing-container text-center"><span id="typing-text"></span><span class="blinking-cursor">|</span></div>
+    </div>
+    <script>
+      const text = "Sedang mengetik...";
+      const typingTextElement = document.getElementById("typing-text");
+      let index = 0;
+
+      function type() {
+        if (index < text.length) {
+          typingTextElement.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(type, 150); // Kecepatan mengetik
+        }
+      }
+
+      type();
+    </script>
+  </body>
+</html>
